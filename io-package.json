@@ -1,0 +1,28 @@
+{
+  "common": {
+    "name": "amazon-dash",
+    "version": "0.0.1",
+    "title": "Amazon Dash-Button",
+    "desc": {
+      "en": "ioBroker amazon-dash Adapter",
+      "de": "ioBroker Amazon-dash Adapter",
+      "ru": "ioBroker Amazon-dash драйвер как образец"
+    },
+    "platform": "Javascript/Node.js",
+    "license": "GPLv2",
+    "mode": "daemon",
+    "icon": "amazon-dash.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/PArns/ioBroker.amazon-dash/master/admin/amazon-dash.png",
+    "keywords": [
+      "amazon-dash"
+    ],
+    "readme": "https://github.com/PArns/ioBroker.amazon-dash/blob/master/README.md",
+    "loglevel": "info",
+    "type": "hardware"
+  },
+  "native": {
+  },
+  "objects": [
+  ]
+}
