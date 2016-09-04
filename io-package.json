@@ -4,9 +4,8 @@
     "version": "0.0.1",
     "title": "Amazon Dash-Button",
     "desc": {
-      "en": "ioBroker amazon-dash Adapter",
-      "de": "ioBroker Amazon-dash Adapter",
-      "ru": "ioBroker Amazon-dash драйвер как образец"
+      "en": "Adapter für Amazon Dash buttons",
+      "de": "Adapter for Amazon Dash buttons"
     },
     "platform": "Javascript/Node.js",
     "license": "GPLv2",
