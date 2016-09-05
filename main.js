@@ -68,7 +68,7 @@ adapter.on('ready', function () {
 
                 adapter.setState(nice_mac + ".state", {val: (new Date()).toISOString(), ack: true});
 
-                adapter.setObjectNotExists(nice_mac + ".state", {
+                adapter.setObjectNotExists(nice_mac + ".switch", {
                     type: "state",
                     common: {
                         name: "Dash button state toggle",
@@ -79,11 +79,12 @@ adapter.on('ready', function () {
                     }
                 });
 
-                adapter.getState(nice_mac + ".state", function (err, state) {
+                adapter.getState(nice_mac + ".switch", function (err, state) {
+                    adapter.log.info(JSON.stringify(state));
                     if (!state || err)
-                        adapter.setState(nice_mac + ".state", {val: false, ack: true});
+                        adapter.setState(nice_mac + ".switch", {val: false, ack: true});
                     else
-                        adapter.setState(nice_mac + ".state", {val: !state.val, ack: true});
+                        adapter.setState(nice_mac + ".switch", {val: !state.val, ack: true});
                 });
             }
         }
