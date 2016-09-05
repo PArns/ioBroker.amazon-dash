@@ -80,7 +80,6 @@ adapter.on('ready', function () {
                 });
 
                 adapter.getState(nice_mac + ".switch", function (err, state) {
-                    adapter.log.info(JSON.stringify(state));
                     if (!state || err)
                         adapter.setState(nice_mac + ".switch", {val: false, ack: true});
                     else

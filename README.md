@@ -19,6 +19,9 @@ Adapter to add Amazon Dash Buttons to ioBroker
 
 ## Changelog
 
+### 0.0.4
++ (PArns) Removed debug infos
+
 ### 0.0.3
 + (PArns) Fixed switch state
 
