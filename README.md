@@ -19,11 +19,15 @@ Adapter to add Amazon Dash Buttons to ioBroker
 
 ## Changelog
 
+### 0.0.2
+(PArns) Added switch state, which toggles between true and false
+(PArns) Changed License
+
 ### 0.0.1
 (PArns) Initial release 
 
 ## License
-General Public License V2 (GPLv2)
+The MIT License (MIT)
 
 Copyright (c) 2016 Patrick Arns <npm@patrick-arns.de>
 

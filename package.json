@@ -1,6 +1,6 @@
 {
   "name": "iobroker.amazon-dash",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ioBroker amazon-dash Adapter",
   "author": {
     "name": "Patrick Arns",
@@ -13,7 +13,7 @@
     }
   ],
   "homepage": "https://github.com/PArns/ioBroker.amazon-dash",
-  "license": "GPLv2",
+  "license": "MIT",
   "keywords": [
     "ioBroker",
     "amazon-dash",

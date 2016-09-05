@@ -66,7 +66,25 @@ adapter.on('ready', function () {
                     }
                 });
 
-                adapter.setState(nice_mac + ".lastPressed", {val: (new Date()).toISOString(), ack: true});
+                adapter.setState(nice_mac + ".state", {val: (new Date()).toISOString(), ack: true});
+
+                adapter.setObjectNotExists(nice_mac + ".state", {
+                    type: "state",
+                    common: {
+                        name: "Dash button state toggle",
+                        type: "boolean",
+                        role: "switch",
+                        read: true,
+                        write: false
+                    }
+                });
+
+                adapter.getState(nice_mac + ".state", function (err, state) {
+                    if (!state || err)
+                        adapter.setState(nice_mac + ".state", {val: false, ack: true});
+                    else
+                        adapter.setState(nice_mac + ".state", {val: !state.val, ack: true});
+                });
             }
         }
     });
