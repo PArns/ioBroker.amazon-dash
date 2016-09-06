@@ -1,6 +1,6 @@
 {
   "name": "iobroker.amazon-dash",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "ioBroker amazon-dash Adapter",
   "author": {
     "name": "Patrick Arns",
@@ -25,7 +25,7 @@
     "url": "https://github.com/PArns/ioBroker.amazon-dash"
   },
   "dependencies": {
-    "pcap": "git+https://github.com/mranney/node_pcap.git"
+    "pcap": "https://github.com/mranney/node_pcap"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

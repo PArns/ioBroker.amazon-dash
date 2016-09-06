@@ -66,7 +66,7 @@ adapter.on('ready', function () {
                     }
                 });
 
-                adapter.setState(nice_mac + ".state", {val: (new Date()).toISOString(), ack: true});
+                adapter.setState(nice_mac + ".lastPressed", {val: (new Date()).toISOString(), ack: true});
 
                 adapter.setObjectNotExists(nice_mac + ".switch", {
                     type: "state",
