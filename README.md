@@ -2,6 +2,12 @@
 # ioBroker.amazon-dash
 =================
 
+[![NPM version](http://img.shields.io/npm/v/iobroker.amazon-dash.svg)](https://www.npmjs.com/package/iobroker.amazon-dash)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.amazon-dash.svg)](https://www.npmjs.com/package/iobroker.amazon-dash)
+
+[![NPM](https://nodei.co/npm/iobroker.amazon-dash.png?downloads=true)](https://nodei.co/npm/iobroker.amazon-dash/)
+
+
 Adapter to add Amazon Dash Buttons to ioBroker
 
 ##Steps 
@@ -9,7 +15,7 @@ Adapter to add Amazon Dash Buttons to ioBroker
 
     ```apt-get install libpcap-dev```
 
-2. Pair your Dash-Adapter within the Amazon App but don't select a product! 
+2. Pair your Dash-Adapter within the Amazon App but don't select a product! [German instructions](https://www.amazon.de/gp/help/customer/display.html?nodeId=201746340]
     Just quit the installation procedure at the product selection tab.
     Otherwise you'll order every time a product ;)
   
