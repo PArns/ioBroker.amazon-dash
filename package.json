@@ -25,7 +25,7 @@
     "url": "https://github.com/PArns/ioBroker.amazon-dash"
   },
   "dependencies": {
-    "pcap": "https://github.com/mranney/node_pcap"
+    "pcap": "https://github.com/mranney/node_pcap/tarball/master"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
