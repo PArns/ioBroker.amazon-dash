@@ -24,6 +24,13 @@ adapter.on('unload', function (callback) {
 });
 
 adapter.on('ready', function () {
+    if (typeof adapter.config.interface == 'undefined') {
+        adapter.config.interface = "";
+        adapter.log.info('starting pcap session on default interface');
+    } else {
+        adapter.log.info('starting pcap session on interface '+adapter.config.interface);
+    }
+
     var pcap_session = pcap.createSession("", "arp");
 
     pcap_session.on('packet', function (raw_packet) {
