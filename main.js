@@ -24,7 +24,7 @@ adapter.on('unload', function (callback) {
 });
 
 adapter.on('ready', function () {
-    if (typeof adapter.config.interface == 'undefined') {
+    if (typeof adapter.config.interface == 'undefined' || adapter.config.interface === '') {
         adapter.config.interface = "";
         adapter.log.info('starting pcap session on default interface');
     } else {
