@@ -25,6 +25,9 @@ Adapter to add Amazon Dash Buttons to ioBroker
 
 ## Changelog
 
+### 0.1.0
++ (Niksac) Added the ability to select an interface
+
 ### 0.0.5
 + (PArns) Fixed lastPushed
 + (PArns) Fixed GIT dependency which might cause problems on some systems
