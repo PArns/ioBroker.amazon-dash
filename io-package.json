@@ -21,6 +21,7 @@
     "type": "hardware"
   },
   "native": {
+      "interface": ""
   },
   "objects": [
   ]
