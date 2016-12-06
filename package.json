@@ -43,6 +43,6 @@
   },
   "readmeFilename": "README.md",
   "scripts": {
-      "preinstall": "apt-get install libpcap-dev || true"
+      "preinstall": "apt-get install -y libpcap-dev || true"
   }
 }
