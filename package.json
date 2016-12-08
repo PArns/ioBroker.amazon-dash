@@ -41,5 +41,8 @@
   "bugs": {
     "url": "https://github.com/PArns/ioBroker.amazon-dash/issues"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "scripts": {
+      "preinstall": "apt-get install libpcap-dev -y || true"
+  }
 }
