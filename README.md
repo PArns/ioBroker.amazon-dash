@@ -25,6 +25,9 @@ Adapter to add Amazon Dash Buttons to ioBroker
 
 ## Changelog
 
+### 0.1.1
++ (GermanBluefox) Try to install libpcap-dev automatically
+
 ### 0.1.0
 + (Niksac) Added the ability to select an interface
 
