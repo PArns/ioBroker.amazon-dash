@@ -8707,6 +8707,7 @@ var x = {
     "ECCD6D": "Allied Telesis",
     "74C246": "Amazon Technologies Inc.",
     "F0272D": "Amazon Technologies Inc.",
+    "34D270": "Amazon Technologies Inc.",
     "00225F": "Liteon Technology Corporation",
     "983B16": "AMPAK Technology",
     "402BA1": "Sony Mobile Communications AB",
