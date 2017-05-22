@@ -5,12 +5,30 @@
 var utils = require(__dirname + '/lib/utils');
 var adapter = utils.adapter('amazon-dash');
 var int_array_to_hex = require('./helpers.js').int_array_to_hex;
-var manufacturer_directory = require('./manufacturer.js').manufacturer_directory;
 var pcap = require('pcap');
+
+var MACs = [
+    "747548",
+    "F0D2F1",
+    "8871E5",
+    "74C246",
+    "F0272D",
+    "34D270",
+    "0C47C9",
+    "A002DC",
+    "AC63BE",
+    "44650D",
+    "50F5DA",
+    "84D6D0"
+];
 
 String.prototype.replaceAll = function (search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
+};
+
+Array.prototype.contains = function(element){
+    return this.indexOf(element) > -1;
 };
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
@@ -41,10 +59,9 @@ adapter.on('ready', function () {
             mac = int_array_to_hex(mac);
 
             var nice_mac = mac.replaceAll(":", "-");
+            var needle = mac.slice(0, 8).toString().toUpperCase().split(':').join('');
 
-            var manufacturer = manufacturer_directory[mac.slice(0, 8).toString().toUpperCase().split(':').join('')];
-
-            if (manufacturer === "Amazon Technologies Inc.") {
+            if (MACs.contains(needle)) {
                 adapter.setObjectNotExists(nice_mac + ".pressed", {
                     type: "state",
                     common: {
