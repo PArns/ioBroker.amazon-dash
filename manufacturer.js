@@ -603,6 +603,7 @@ var x = {
     "989449": "Skyworth Wireless Technology Ltd.",
     "E043DB": "Shenzhen ViewAt Technology Co.",
     "2405F5": "Integrated Device Technology (Malaysia) Sdn. Bhd.",
+    "B47C9C": "Amazon Technologies Inc.",
     "2C3033": "NETGEAR",
     "3CD92B": "Hewlett Packard",
     "9C8E99": "Hewlett Packard",
