@@ -15,9 +15,9 @@ Adapter to add Amazon Dash Buttons to ioBroker
 
     ```apt-get install libpcap-dev```
 
-2. Pair your Dash-Adapter within the Amazon App but don't select a product! [German instructions](https://www.amazon.de/gp/help/customer/display.html?nodeId=201746340]
+2. Pair your Dash-Adapter within the Amazon App but don't select a product! 
     Just quit the installation procedure at the product selection tab.
-    Otherwise you'll order every time a product ;)
+    Otherwise you'll order every time a product ;) [German instructions](https://www.amazon.de/gp/help/customer/display.html?nodeId=201746340).
   
 3. Hit the dash button (should be white first, then flashing red)
 
