@@ -20,16 +20,13 @@ var MACs = [
     "44650D",
     "50F5DA",
     "84D6D0",
-    "B47C9C"
+    "B47C9C",
+    "FCA667"
 ];
 
 String.prototype.replaceAll = function (search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
-};
-
-Array.prototype.contains = function(element){
-    return this.indexOf(element) > -1;
 };
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
@@ -62,7 +59,7 @@ adapter.on('ready', function () {
             var nice_mac = mac.replaceAll(":", "-");
             var needle = mac.slice(0, 8).toString().toUpperCase().split(':').join('');
 
-            if (MACs.contains(needle)) {
+            if (MACs.indexOf(needle) > -1) {
                 adapter.setObjectNotExists(nice_mac + ".pressed", {
                     type: "state",
                     common: {
