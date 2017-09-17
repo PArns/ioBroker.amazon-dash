@@ -1,6 +1,6 @@
 {
   "name": "iobroker.amazon-dash",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "ioBroker amazon-dash Adapter",
   "author": {
     "name": "Patrick Arns",
