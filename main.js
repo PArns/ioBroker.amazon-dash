@@ -22,7 +22,8 @@ var MACs = [
     "84D6D0",
     "B47C9C",
     "FCA667",
-    "18742E"
+    "18742E",
+    "78E103"
 ];
 
 String.prototype.replaceAll = function (search, replacement) {
