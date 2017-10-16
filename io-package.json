@@ -4,8 +4,9 @@
     "version": "0.2.5",
     "title": "Amazon Dash-Button",
     "desc": {
-      "en": "Adapter für Amazon Dash buttons",
-      "de": "Adapter for Amazon Dash buttons"
+      "de": "Adapter für Amazon Dash buttons",
+      "en": "Adapter for Amazon Dash buttons",
+      "ru": "Драйвер для подключения Amazon Dash кнопок" 
     },
     "platform": "Javascript/Node.js",
     "license": "MIT",
