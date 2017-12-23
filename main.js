@@ -32,6 +32,11 @@ String.prototype.replaceAll = function (search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
+
+adapter.on('ready', function () {
+    main();
+});
+
 // is called when adapter shuts down - callback has to be called under any circumstances!
 adapter.on('unload', function (callback) {
     try {
@@ -42,7 +47,21 @@ adapter.on('unload', function (callback) {
     }
 });
 
-adapter.on('ready', function () {
+function main() {
+    var k;
+    if (adapter.config.devices.length) {
+        for (k = 0; k < adapter.config.devices.length; k++) {
+            var mac = adapter.config.devices[k].mac;
+            var macOK = mac.replaceAll(":", "");
+
+            if (macOK.length > 5) {
+                MACs.push(macOK.substring(1,6));
+            }
+        }
+    }
+
+    MACs = remove_duplicates(MACs);
+
     if (typeof adapter.config.interface == 'undefined' || adapter.config.interface === '') {
         adapter.config.interface = "";
         adapter.log.info('starting pcap session on default interface');
@@ -113,4 +132,16 @@ adapter.on('ready', function () {
             }
         }
     });
-});
+}
+
+function remove_duplicates(arr) {
+    var obj = {};
+    var ret_arr = [];
+    for (var i = 0; i < arr.length; i++) {
+        obj[arr[i]] = true;
+    }
+    for (var key in obj) {
+        ret_arr.push(key);
+    }
+    return ret_arr;
+}
