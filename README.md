@@ -26,8 +26,9 @@ Adapter to add Amazon Dash Buttons to ioBroker
 ## Changelog
 
 ### 0.2.6
-+ (arteck)  edit admin
-            add manual MAC Adresses 
++ (arteck) edit admin
++ (arteck) add manual MAC Adresses 
++ (PArns) Added new Amazon MAC family
 
 ### 0.2.5
 + (PArns) Added new Amazon MAC family

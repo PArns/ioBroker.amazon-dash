@@ -24,7 +24,9 @@ var MACs = [
     "FCA667",
     "18742E",
     "78E103",
-    "6837E9"
+    "6837E9",
+    "00FC8B",
+    "40B4CD"
 ];
 
 String.prototype.replaceAll = function (search, replacement) {
@@ -49,7 +51,7 @@ adapter.on('unload', function (callback) {
 
 function main() {
     var k;
-    if (adapter.config.devices.length) {
+    if (adapter.config.devices && adapter.config.devices.length) {
         for (k = 0; k < adapter.config.devices.length; k++) {
             var mac = adapter.config.devices[k].mac;
             var macOK = mac.replaceAll(":", "");
