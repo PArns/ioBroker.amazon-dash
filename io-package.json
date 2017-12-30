@@ -2,6 +2,13 @@
   "common": {
     "name": "amazon-dash",
     "version": "0.2.6",
+    "news": {
+      "0.0.26": {
+        "en": "add new admin  ",
+        "de": "admin ist neu",
+        "ru": "?????????"
+      }
+    },
     "title": "Amazon Dash-Button",
     "desc": {
       "de": "Adapter für Amazon Dash buttons",
