@@ -57,7 +57,8 @@ function main() {
             var macOK = mac.replaceAll(":", "");
 
             if (macOK.length > 5) {
-                MACs.push(macOK.substring(1,6));
+                MACs.push(macOK.substring(0,6));
+                adapter.log.debug('MAC ' + macOK.substring(0,6));
             }
         }
     }
@@ -83,6 +84,8 @@ function main() {
             var nice_mac = mac.replaceAll(":", "-");
             var needle = mac.slice(0, 8).toString().toUpperCase().split(':').join('');
 
+            adapter.log.debug('needle pcap ' + needle);
+            
             if (MACs.indexOf(needle) > -1) {
                 adapter.setObjectNotExists(nice_mac + ".pressed", {
                     type: "state",
