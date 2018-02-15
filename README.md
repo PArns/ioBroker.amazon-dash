@@ -1,5 +1,5 @@
 ![Logo](admin/amazon-dash.png)
-# ioBroker.amazon-dash
+# ioBroker.amazon-dash (Linux only!)
 =================
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.amazon-dash.svg)](https://www.npmjs.com/package/iobroker.amazon-dash)
@@ -24,6 +24,9 @@ Adapter to add Amazon Dash Buttons to ioBroker
 4. Within the adapter objects, a new dash button should appear which you can use to start scenes or within the JS adapter
 
 ## Changelog
+
+### 0.2.8
++ (offline4ever) Added new Amazon MAC family
 
 ### 0.2.7
 + (arteck) fixed MAC parsing
