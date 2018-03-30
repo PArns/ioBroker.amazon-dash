@@ -25,6 +25,10 @@ Adapter to add Amazon Dash Buttons to ioBroker
 
 ## Changelog
 
+### 0.2.9
++ (cernst1980) Ignore duplicate ARPs for 5 seconds
++ (PArns) Added new Amazon MAC family
+
 ### 0.2.8
 + (offline4ever) Added new Amazon MAC family
 
