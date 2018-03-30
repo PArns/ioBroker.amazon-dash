@@ -132,8 +132,12 @@ function main() {
                 adapter.getState(nice_mac + ".switch", function (err, state) {
                     if (!state || err)
                         adapter.setState(nice_mac + ".switch", {val: false, ack: true});
-                    else
-                        adapter.setState(nice_mac + ".switch", {val: !state.val, ack: true});
+                    else {
+                        var now = new Date();
+                        if (now.getTime() - state.lc > 5000) {
+                            adapter.setState(nice_mac + ".switch", {val: !state.val, ack: true});
+                        }
+                    }
                 });
             }
         }
