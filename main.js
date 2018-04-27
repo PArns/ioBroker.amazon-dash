@@ -3,7 +3,7 @@
 "use strict";
 
 var utils = require(__dirname + '/lib/utils');
-var adapter = utils.adapter('amazon-dash');
+var adapter = utils.Adapter('amazon-dash');
 var int_array_to_hex = require('./helpers.js').int_array_to_hex;
 var pcap = require('pcap');
 
