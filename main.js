@@ -7,29 +7,7 @@ var adapter = utils.Adapter('amazon-dash');
 var int_array_to_hex = require('./helpers.js').int_array_to_hex;
 var pcap = require('pcap');
 
-var MACs = [
-    "747548",
-    "F0D2F1",
-    "8871E5",
-    "74C246",
-    "F0272D",
-    "34D270",
-    "0C47C9",
-    "A002DC",
-    "AC63BE",
-    "44650D",
-    "50F5DA",
-    "84D6D0",
-    "B47C9C",
-    "FCA667",
-    "18742E",
-    "78E103",
-    "6837E9",
-    "00FC8B",
-    "40B4CD",
-    "FC65DE",
-    "2C3AE8",
-    "6C5697"
+var MACs = [   // no defaults
 ];
 
 String.prototype.replaceAll = function (search, replacement) {
@@ -59,8 +37,8 @@ function main() {
             var mac = adapter.config.devices[k].mac;
             var macOK = mac.replaceAll(":", "");
 
-            if (macOK.length > 5) {                
-                MACs.push(macOK.substring(0,6));
+            if (macOK.length > 11) {                // full MAC´s
+                MACs.push(macOK.substring(0,12));
                 adapter.log.debug('manual MAC : ' + MACs.push(macOK.substring(0,6)));
             }
         }
@@ -85,7 +63,7 @@ function main() {
             mac = int_array_to_hex(mac);
 
             var nice_mac = mac.replaceAll(":", "-");
-            var needle = mac.slice(0, 8).toString().toUpperCase().split(':').join('');
+            var needle = mac.slice(0, 17).toString().toUpperCase().split(':').join('');
 
             adapter.log.debug('needle MAC : ' + needle);
             
