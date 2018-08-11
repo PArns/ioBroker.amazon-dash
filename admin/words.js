@@ -10,6 +10,6 @@ systemDictionary = {
         "ru": ""
     },
     "name": {"en": "Name", "de": "Name", "ru": "Имя"},
-    "mac": {"en": "MAC Address format first xx:xx:xx", "de": "MAC Adresse die ersten xx:xx:xx", "ru": "MAC Адрес xx:xx:xx"},
+    "mac": {"en": "MAC Address format xx:xx:xx:xx:xx:xx", "de": "MAC Adresse xx:xx:xx:xx:xx:xx", "ru": "MAC Адрес xx:xx:xx:xx:xx:xx"},
 
 };
