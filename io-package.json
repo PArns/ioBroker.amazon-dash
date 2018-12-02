@@ -1,18 +1,28 @@
 {
   "common": {
     "name": "amazon-dash",
-    "version": "0.2.9",
+    "version": "0.3.0",
     "title": "Amazon Dash-Button",
     "desc": {
       "de": "Adapter für Amazon Dash buttons",
       "en": "Adapter for Amazon Dash buttons",
       "ru": "Драйвер для подключения Amazon Dash кнопок" 
     },
+    "authors": [
+      "Patrick Arns <npm@patrick-arns.de>"
+    ],
+    "news": {
+      "0.3.0": {
+        "en": "materialize ui and minor fixes",
+        "de": "Materialize Oberfläche und kleine Änderungen"
+      }
+    },
     "platform": "Javascript/Node.js",
     "license": "MIT",
     "mode": "daemon",
     "icon": "amazon-dash.png",
     "enabled": true,
+    "materialize": true,
     "extIcon": "https://raw.githubusercontent.com/PArns/ioBroker.amazon-dash/master/admin/amazon-dash.png",
     "keywords": [
       "amazon-dash"

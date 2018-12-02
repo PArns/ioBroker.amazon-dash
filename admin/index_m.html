@@ -1,0 +1,147 @@
+<html>
+
+
+<link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+<link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
+
+<script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+
+<script type="text/javascript" src="../../js/translate.js"></script>
+<script type="text/javascript" src="../../lib/js/materialize.js"></script>
+<script type="text/javascript" src="../../js/adapter-settings.js"></script>
+<script type="text/javascript" src="words.js"></script>
+
+<style>
+    .table_header {
+        background-color: blue;
+        color: white;
+    }
+
+    .ip {
+        width: 150px;
+        text-align: right;
+    }
+</style>
+
+<!-- you have to define 2 functions in the global scope: -->
+<script type="text/javascript">
+    var devices = [];
+
+    // the function loadSettings has to exist ...
+    function load(settings, onChange) {
+        if (!settings) return;
+
+        devices = settings.devices || [];
+
+        for (var key in settings) {
+            setValue(key, settings[key], onChange);
+        }
+
+        if (typeof values2table === 'function') {
+            $('#devices').hide();
+            $('#pager-devices').hide();
+            values2table('values', devices, onChange);
+        } else {
+            editTable('devices', ['name', 'mac'], devices, 350);
+            $('#values').hide();
+        }
+
+        onChange(false);
+    }
+
+    // ... and the function save has to exist.
+    // you have to make sure the callback is called with the settings object as first param!
+    function save(callback) {
+        // example: select elements with class=value and build settings object
+        var obj = {};
+        $('.value').each(function () {
+            var $this = $(this);
+            obj[$this.attr('id')] = $this.val();
+        });
+
+        // Get edited table
+        if (typeof table2values === 'function') {
+            obj.devices = table2values('values');
+        } else {
+            obj.devices = getTableResult('devices', ['name', 'mac']);
+        }
+
+        callback(obj);
+    }
+
+
+    function setValue(id, value, onChange) {
+        // example: select elements with id=key and class=value and insert value
+
+        $('#' + id + '.value').val(value).change(function () {
+            onChange();
+        }).keyup(function () {
+            // Chack that only numbers entered
+            if ($(this).hasClass('number')) {
+                var val = $(this).val();
+                if (val) {
+                    var newVal = '';
+                    for (var i = 0; i < val.length; i++) {
+                        if (val[i] >= '0' && val[i] <= '9') {
+                            newVal += val[i];
+                        }
+                    }
+
+                    if (val != newVal) $(this).val(newVal);
+                }
+            }
+
+            onChange();
+        });
+
+    }
+
+
+</script>
+
+<style>
+    #settings tr {
+        line-height: 2.5em;
+    }
+</style>
+
+<!-- you have to put your config page in a div with id adapter-container -->
+<div class="m adapter-container">
+    <div class="row">
+        <div class="input-field col s6">
+            <img src="amazon-dash.png" class="logo">
+        </div>
+    </div>
+
+    <!--table>
+        <tr>
+            <td class="translate">pcap</td>
+            <td><input type="text" id="interface" class="value"></td>
+        </tr>
+    </table-->
+
+
+    <table id="devices"></table>
+    <div id="pager-devices"></div>
+
+    <div id="values" style="width: 100%; height: calc(100% - 195px)">
+        <div class="row">
+            <a class="btn-floating waves-effect waves-light blue"><i class="material-icons table-button-add">add</i></a>
+        </div>
+        <div style="width: 100%; height: calc(100% - 30px); overflow: auto;">
+            <table class="table-values" style="width: 100%;">
+                <thead>
+                <tr>
+                    <th data-name="_index" style="width: 40px" class="blue translate"></th>
+                    <th data-name="name" style="width: 30%" class="blue translate">name</th>
+                    <th data-name="mac" class="blue translate">mac</th>
+                    <th data-buttons="delete" style="width: 40px" class="blue"></th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+</html>
