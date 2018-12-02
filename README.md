@@ -27,6 +27,7 @@ Adapter to add Amazon Dash Buttons to ioBroker
 
 ### 0.3.0
 + (foxriver76) materialize ui
++ (foxriver76) dash buttons are now of type device
 
 ### 0.2.9
 + (cernst1980) Ignore duplicate ARPs for 5 seconds

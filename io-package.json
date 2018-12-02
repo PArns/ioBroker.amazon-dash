@@ -13,8 +13,8 @@
     ],
     "news": {
       "0.3.0": {
-        "en": "materialize ui and minor fixes",
-        "de": "Materialize Oberfläche und kleine Änderungen"
+        "en": "materialize ui and minor fixes, dash buttons now of type device",
+        "de": "Materialize Oberfläche und kleine Änderungen, Dash Buttons sind nun vom Typ Device"
       }
     },
     "platform": "Javascript/Node.js",
