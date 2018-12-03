@@ -2,12 +2,12 @@
 /*jslint node: true */
 "use strict";
 
-var utils = require(__dirname + '/lib/utils');
-var adapter = utils.Adapter('amazon-dash');
-var int_array_to_hex = require('./helpers.js').int_array_to_hex;
-var pcap = require('pcap');
+const utils = require(__dirname + '/lib/utils');
+const adapter = utils.Adapter('amazon-dash');
+const int_array_to_hex = require('./helpers.js').int_array_to_hex;
+const pcap = require('pcap');
 
-var MACs = [
+let MACs = [
     "747548",
     "F0D2F1",
     "8871E5",
@@ -33,7 +33,7 @@ var MACs = [
 ];
 
 String.prototype.replaceAll = function (search, replacement) {
-    var target = this;
+    const target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
@@ -43,7 +43,7 @@ adapter.on('ready', function () {
 });
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
-adapter.on('unload', function (callback) {
+adapter.on('unload', (callback) => {
     try {
         adapter.log.info('cleaned everything up...');
         callback();
@@ -53,11 +53,10 @@ adapter.on('unload', function (callback) {
 });
 
 function main() {
-    var k;
     if (adapter.config.devices && adapter.config.devices.length) {
-        for (k = 0; k < adapter.config.devices.length; k++) {
-            var mac = adapter.config.devices[k].mac;
-            var macOK = mac.replaceAll(":", "");
+        for (let k = 0; k < adapter.config.devices.length; k++) {
+            let mac = adapter.config.devices[k].mac;
+            let macOK = mac.replaceAll(":", "");
 
             if (macOK.length > 5) {                
                 MACs.push(macOK.substring(0,6));
@@ -75,21 +74,33 @@ function main() {
         adapter.log.info('starting pcap session on interface '+adapter.config.interface);
     }
 
-    var pcap_session = pcap.createSession(adapter.config.interface, "arp");
+    let pcap_session = pcap.createSession(adapter.config.interface, "arp");
 
     pcap_session.on('packet', function (raw_packet) {
-        var packet = pcap.decode.packet(raw_packet);
+        const packet = pcap.decode.packet(raw_packet);
         if (packet.payload.ethertype === 2054) {
 
-            var mac = packet.payload.payload.sender_ha.addr;
+            let mac = packet.payload.payload.sender_ha.addr;
             mac = int_array_to_hex(mac);
 
-            var nice_mac = mac.replaceAll(":", "-");
-            var needle = mac.slice(0, 8).toString().toUpperCase().split(':').join('');
+            const nice_mac = mac.replaceAll(":", "-");
+            const needle = mac.slice(0, 8).toString().toUpperCase().split(':').join('');
 
             adapter.log.debug('needle MAC : ' + needle);
             
             if (MACs.indexOf(needle) > -1) {
+
+                adapter.getObject(nice_mac, (err, obj) => {
+                    // if non existent or not type device
+                    if (!obj || obj.type !== 'device') {
+                        adapter.setObject(nice_mac, {
+                            type: "device",
+                            common: {},
+                            native: {}
+                        });
+                    } // endIf
+                });
+
                 adapter.setObjectNotExists(nice_mac + ".pressed", {
                     type: "state",
                     common: {
@@ -103,7 +114,7 @@ function main() {
 
                 adapter.setState(nice_mac + ".pressed", {val: true, ack: true});
 
-                setTimeout(function () {
+                setTimeout(() => {
                     adapter.setState(nice_mac + ".pressed", {val: false, ack: true});
                 }, 5000);
 
@@ -131,11 +142,11 @@ function main() {
                     }
                 });
 
-                adapter.getState(nice_mac + ".switch", function (err, state) {
+                adapter.getState(nice_mac + ".switch", (err, state) => {
                     if (!state || err)
                         adapter.setState(nice_mac + ".switch", {val: false, ack: true});
                     else {
-                        var now = new Date();
+                        const now = new Date();
                         if (now.getTime() - state.lc > 5000) {
                             adapter.setState(nice_mac + ".switch", {val: !state.val, ack: true});
                         }
@@ -147,12 +158,12 @@ function main() {
 }
 
 function remove_duplicates(arr) {
-    var obj = {};
-    var ret_arr = [];
-    for (var i = 0; i < arr.length; i++) {
+    let obj = {};
+    let ret_arr = [];
+    for (let i = 0; i < arr.length; i++) {
         obj[arr[i]] = true;
     }
-    for (var key in obj) {
+    for (let key in obj) {
         ret_arr.push(key);
     }
     return ret_arr;
