@@ -23,7 +23,15 @@ Adapter to add Amazon Dash Buttons to ioBroker
 
 4. Within the adapter objects, a new dash button should appear which you can use to start scenes or within the JS adapter
 
+
+## HELP WANTED!
+
+As this project is developed during my spare time, I*m actively looking for help to maintain and extend this lib! If you're willing to help, drop me a line!
+
 ## Changelog
+
+### 0.3.1
++ (PArns) Added new Amazon MAC family
 
 ### 0.3.0
 + (foxriver76) materialize ui

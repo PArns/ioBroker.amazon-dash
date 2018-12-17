@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "amazon-dash",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "title": "Amazon Dash-Button",
     "desc": {
       "de": "Adapter für Amazon Dash buttons",
