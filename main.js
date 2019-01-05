@@ -3,9 +3,9 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
-const adapter = utils.Adapter('amazon-dash');
-const int_array_to_hex = require('./helpers.js').int_array_to_hex;
+const int_array_to_hex = require('./lib/helpers.js').int_array_to_hex;
 const pcap = require('pcap');
+let adapter;
 
 let MACs = [
     '747548',
@@ -38,20 +38,29 @@ String.prototype.replaceAll = function (search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
+function startAdapter(options) {
+    options = options || {};
+    Object.assign(options, {
+        name: 'amazon-dash'
+    });
 
-adapter.on('ready', function () {
-    main();
-});
+    adapter = new utils.Adapter(options);
 
-// is called when adapter shuts down - callback has to be called under any circumstances!
-adapter.on('unload', (callback) => {
-    try {
-        adapter.log.info('cleaned everything up...');
-        callback();
-    } catch (e) {
-        callback();
-    }
-});
+    adapter.on('ready', function () {
+        main();
+    });
+
+    adapter.on('unload', (callback) => {
+        try {
+            adapter.log.info('cleaned everything up...');
+            callback();
+        } catch (e) {
+            callback();
+        }
+    });
+
+    return adapter;
+} // endStartAdapter
 
 function main() {
     if (adapter.config.devices && adapter.config.devices.length) {
@@ -169,3 +178,11 @@ function remove_duplicates(arr) {
     }
     return ret_arr;
 }
+
+// If started as allInOne/compact mode => return function to create instance
+if (module && module.parent) {
+    module.exports = startAdapter;
+} else {
+    // or start the instance directly
+    startAdapter();
+} // endElse

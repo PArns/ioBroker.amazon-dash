@@ -30,6 +30,10 @@ As this project is developed during my spare time, I*m actively looking for help
 
 ## Changelog
 
+### 0.4.0
++ (foxriver76) support of compact mode
++ (foxriver76) usage of adapter-core and eslint
+
 ### 0.3.1
 + (PArns) Added new Amazon MAC family
 
