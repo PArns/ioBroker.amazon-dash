@@ -33,6 +33,7 @@
         "mode": "daemon",
         "icon": "amazon-dash.png",
         "enabled": true,
+        "compact": true,
         "materialize": true,
         "extIcon": "https://raw.githubusercontent.com/PArns/ioBroker.amazon-dash/master/admin/amazon-dash.png",
         "keywords": [
@@ -45,7 +46,6 @@
     "native": {
         "interface": ""
     },
-    "compact": true,
     "objects": [
     ]
 }
