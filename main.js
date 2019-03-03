@@ -2,7 +2,7 @@
 /*jslint node: true */
 "use strict";
 
-const utils = require(__dirname + '/lib/utils');
+const utils = require('@iobroker/adapter-core');
 const adapter = utils.Adapter('amazon-dash');
 const int_array_to_hex = require('./helpers.js').int_array_to_hex;
 const pcap = require('pcap');
