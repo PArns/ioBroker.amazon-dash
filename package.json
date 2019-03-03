@@ -1,43 +1,44 @@
 {
-    "name": "iobroker.amazon-dash",
-    "version": "0.3.1",
-    "description": "ioBroker amazon-dash Adapter",
-    "author": {
-        "name": "Patrick Arns",
-        "email": "npm@patrick-arns.de"
-    },
-    "contributors": [
-        {
-            "name": "Patrick Arns",
-            "email": "npm@patrick-arns.de"
-        }
-    ],
-    "homepage": "https://github.com/PArns/ioBroker.amazon-dash",
-    "license": "MIT",
-    "keywords": [
-        "ioBroker",
-        "amazon-dash",
-        "Smart Home",
-        "home automation"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/PArns/ioBroker.amazon-dash"
-    },
-    "dependencies": {
-        "pcap": "^2.1.0"
-    },
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "mocha": "^4.1.0",
-        "chai": "^4.1.2"
-    },
-    "bugs": {
-        "url": "https://github.com/PArns/ioBroker.amazon-dash/issues"
-    },
-    "readmeFilename": "README.md",
-    "scripts": {
-        "preinstall": "apt install libpcap-dev -y || true",
-        "test": "node node_modules/mocha/bin/mocha --exit"
+  "name": "iobroker.amazon-dash",
+  "version": "0.3.1",
+  "description": "ioBroker amazon-dash Adapter",
+  "author": {
+    "name": "Patrick Arns",
+    "email": "npm@patrick-arns.de"
+  },
+  "contributors": [
+    {
+      "name": "Patrick Arns",
+      "email": "npm@patrick-arns.de"
     }
+  ],
+  "homepage": "https://github.com/PArns/ioBroker.amazon-dash",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "amazon-dash",
+    "Smart Home",
+    "home automation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PArns/ioBroker.amazon-dash"
+  },
+  "dependencies": {
+    "pcap": "^2.1.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "mocha": "^4.1.0",
+    "chai": "^4.1.2",
+    "@iobroker/adapter-core": "^1.0.3"
+  },
+  "bugs": {
+    "url": "https://github.com/PArns/ioBroker.amazon-dash/issues"
+  },
+  "readmeFilename": "README.md",
+  "scripts": {
+    "preinstall": "apt install libpcap-dev -y || true",
+    "test": "node node_modules/mocha/bin/mocha --exit"
+  }
 }
