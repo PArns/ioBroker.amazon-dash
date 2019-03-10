@@ -2,7 +2,7 @@
 # ioBroker.amazon-dash (Linux only!)
 =================
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.amazon-dash.svg)](https://www.npmjs.com/package/iobroker.amazon-dash)
+![Number of Installations](http://iobroker.live/badges/amazon-dash-installed.svg) ![Number of Installations](http://iobroker.live/badges/amazon-dash-stable.svg) [![NPM version](http://img.shields.io/npm/v/iobroker.amazon-dash.svg)](https://www.npmjs.com/package/iobroker.amazon-dash)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.amazon-dash.svg)](https://www.npmjs.com/package/iobroker.amazon-dash)
 
 [![NPM](https://nodei.co/npm/iobroker.amazon-dash.png?downloads=true)](https://nodei.co/npm/iobroker.amazon-dash/)
