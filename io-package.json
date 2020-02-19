@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "amazon-dash",
-    "version": "0.3.1",
+    "version": "1.0.0",
     "title": "Amazon Dash-Button",
     "desc": {
       "de": "Adapter für Amazon Dash buttons",
@@ -16,6 +16,9 @@
         "en": "materialize ui and minor fixes, dash buttons now of type device",
         "de": "Materialize Oberfläche und kleine Änderungen, Dash Buttons sind nun vom Typ Device"
       }
+    },
+    "osDependencies": {
+      "linux": ["libpcap-dev"]
     },
     "platform": "Javascript/Node.js",
     "license": "MIT",

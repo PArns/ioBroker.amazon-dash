@@ -75,7 +75,7 @@ function main() {
         adapter.log.info('starting pcap session on interface '+adapter.config.interface);
     }
 
-    let pcap_session = pcap.createSession(adapter.config.interface, "arp");
+    let pcap_session = pcap.createSession(adapter.config.interface, {filter: "arp"});
 
     pcap_session.on('packet', function (raw_packet) {
         const packet = pcap.decode.packet(raw_packet);

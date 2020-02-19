@@ -1,6 +1,6 @@
 {
   "name": "iobroker.amazon-dash",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "ioBroker amazon-dash Adapter",
   "author": {
     "name": "Patrick Arns",
@@ -24,15 +24,18 @@
     "type": "git",
     "url": "https://github.com/PArns/ioBroker.amazon-dash"
   },
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "dependencies": {
-    "pcap": "^2.1.0",
-    "@iobroker/adapter-core": "^1.0.3"
+    "pcap": "node-pcap/node_pcap",
+    "@iobroker/adapter-core": "^2.2.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "mocha": "^4.1.0",
-    "chai": "^4.1.2",
-    "@iobroker/testing": "^1.1.10"
+    "gulp": "^4.0.2",
+    "mocha": "^7.0.1",
+    "chai": "^4.2.0",
+    "@iobroker/testing": "^2.0.2"
   },
   "main": "main.js",
   "bugs": {
