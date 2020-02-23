@@ -30,6 +30,9 @@ As this project is developed during my spare time, I*m actively looking for help
 
 ## Changelog
 
+### 1.0.1
++ (Apollon77) BREAKING: Ugrade pcap library supports nodejs 10+ and also supports nodejs 12
+
 ### 0.3.1
 + (PArns) Added new Amazon MAC family
 
