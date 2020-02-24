@@ -2,7 +2,7 @@
 /*jslint node: true */
 "use strict";
 
-const utils = require(__dirname + '/lib/utils');
+const utils = require('@iobroker/adapter-core');
 const adapter = utils.Adapter('amazon-dash');
 const int_array_to_hex = require('./helpers.js').int_array_to_hex;
 const pcap = require('pcap');
@@ -75,7 +75,7 @@ function main() {
         adapter.log.info('starting pcap session on interface '+adapter.config.interface);
     }
 
-    let pcap_session = pcap.createSession(adapter.config.interface, "arp");
+    let pcap_session = pcap.createSession(adapter.config.interface, {filter: "arp"});
 
     pcap_session.on('packet', function (raw_packet) {
         const packet = pcap.decode.packet(raw_packet);

@@ -1,43 +1,52 @@
 {
-    "name": "iobroker.amazon-dash",
-    "version": "0.3.1",
-    "description": "ioBroker amazon-dash Adapter",
-    "author": {
-        "name": "Patrick Arns",
-        "email": "npm@patrick-arns.de"
-    },
-    "contributors": [
-        {
-            "name": "Patrick Arns",
-            "email": "npm@patrick-arns.de"
-        }
-    ],
-    "homepage": "https://github.com/PArns/ioBroker.amazon-dash",
-    "license": "MIT",
-    "keywords": [
-        "ioBroker",
-        "amazon-dash",
-        "Smart Home",
-        "home automation"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/PArns/ioBroker.amazon-dash"
-    },
-    "dependencies": {
-        "pcap": "^2.1.0"
-    },
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "mocha": "^4.1.0",
-        "chai": "^4.1.2"
-    },
-    "bugs": {
-        "url": "https://github.com/PArns/ioBroker.amazon-dash/issues"
-    },
-    "readmeFilename": "README.md",
-    "scripts": {
-        "preinstall": "apt install libpcap-dev -y || true",
-        "test": "node node_modules/mocha/bin/mocha --exit"
+  "name": "iobroker.amazon-dash",
+  "version": "1.0.1",
+  "description": "ioBroker amazon-dash Adapter",
+  "author": {
+    "name": "Patrick Arns",
+    "email": "npm@patrick-arns.de"
+  },
+  "contributors": [
+    {
+      "name": "Patrick Arns",
+      "email": "npm@patrick-arns.de"
     }
+  ],
+  "homepage": "https://github.com/PArns/ioBroker.amazon-dash",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "amazon-dash",
+    "Smart Home",
+    "home automation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PArns/ioBroker.amazon-dash"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "dependencies": {
+    "pcap": "^3.1.0",
+    "@iobroker/adapter-core": "^2.2.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "mocha": "^7.0.1",
+    "chai": "^4.2.0",
+    "@iobroker/testing": "^2.0.2"
+  },
+  "main": "main.js",
+  "bugs": {
+    "url": "https://github.com/PArns/ioBroker.amazon-dash/issues"
+  },
+  "readmeFilename": "README.md",
+  "scripts": {
+    "preinstall": "apt install libpcap-dev -y || true",
+    "test": "npm run test:package && npm run test:unit",
+    "test:package": "mocha test/package --exit",
+    "test:unit": "mocha test/unit --exit",
+    "test:integration": "mocha test/integration --exit"
+  }
 }
