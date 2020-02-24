@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "amazon-dash",
-        "version": "0.4.0",
+        "version": "1.0.2",
         "title": "Amazon Dash-Button",
         "desc": {
             "de": "Adapter für Amazon Dash buttons",
@@ -12,7 +12,7 @@
             "Patrick Arns <npm@patrick-arns.de>"
         ],
         "news": {
-            "0.4.0": {
+            "1.0.2": {
                 "en": "add compatibility of compact mode, usage of eslint and adapter-core module",
                 "de": "Kompatibilität mit Kompaktmodus, Verwendung von Eslint und Adapterkernmodul hinzufügen",
                 "ru": "добавить совместимость компактного режима, использование eslint и модуля ядра адаптера",
@@ -41,7 +41,12 @@
         ],
         "readme": "https://github.com/PArns/ioBroker.amazon-dash/blob/master/README.md",
         "loglevel": "info",
-        "type": "hardware"
+        "type": "hardware",
+        "osDependencies": {
+            "linux": [
+                "libpcap-dev"
+            ]
+        }
     },
     "native": {
         "interface": ""

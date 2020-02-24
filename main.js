@@ -3,7 +3,7 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
-const int_array_to_hex = require('./lib/helpers.js').int_array_to_hex;
+const int_array_to_hex = require('lib/helpers.js').int_array_to_hex;
 const pcap = require('pcap');
 let adapter;
 
@@ -30,7 +30,8 @@ let MACs = [
     'FC65DE',
     '2C3AE8',
     '6C5697',
-    '38F73D'
+    '38F73D',
+    '6854FD'
 ];
 
 String.prototype.replaceAll = function (search, replacement) {
@@ -68,9 +69,9 @@ function main() {
             const mac = adapter.config.devices[k].mac;
             const macOK = mac.replaceAll(':', '');
 
-            if (macOK.length > 5) {                
-                MACs.push(macOK.substring(0,6));
-                adapter.log.debug('manual MAC : ' + MACs.push(macOK.substring(0,6)));
+            if (macOK.length > 5) {
+                MACs.push(macOK.substring(0, 6));
+                adapter.log.debug('manual MAC : ' + MACs.push(macOK.substring(0, 6)));
             }
         }
     }
@@ -81,10 +82,11 @@ function main() {
         adapter.config.interface = '';
         adapter.log.info('starting pcap session on default interface');
     } else {
-        adapter.log.info('starting pcap session on interface '+adapter.config.interface);
+        adapter.log.info('starting pcap session on interface ' + adapter.config.interface);
     }
 
-    const pcap_session = pcap.createSession(adapter.config.interface, 'arp');
+
+    const pcap_session = pcap.createSession(adapter.config.interface, {filter: 'arp'});
 
     pcap_session.on('packet', function (raw_packet) {
         const packet = pcap.decode.packet(raw_packet);
@@ -97,7 +99,7 @@ function main() {
             const needle = mac.slice(0, 8).toString().toUpperCase().split(':').join('');
 
             adapter.log.debug('needle MAC : ' + needle);
-            
+
             if (MACs.indexOf(needle) > -1) {
 
                 adapter.getObject(nice_mac, (err, obj) => {
