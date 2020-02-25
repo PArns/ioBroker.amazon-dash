@@ -1,42 +1,56 @@
 {
-  "common": {
-    "name": "amazon-dash",
-    "version": "1.0.1",
-    "title": "Amazon Dash-Button",
-    "desc": {
-      "de": "Adapter für Amazon Dash buttons",
-      "en": "Adapter for Amazon Dash buttons",
-      "ru": "Драйвер для подключения Amazon Dash кнопок" 
+    "common": {
+        "name": "amazon-dash",
+        "version": "1.0.2",
+        "title": "Amazon Dash-Button",
+        "desc": {
+            "de": "Adapter für Amazon Dash buttons",
+            "en": "Adapter for Amazon Dash buttons",
+            "ru": "Драйвер для подключения Amazon Dash кнопок"
+        },
+        "authors": [
+            "Patrick Arns <npm@patrick-arns.de>"
+        ],
+        "news": {
+            "1.0.2": {
+                "en": "add compatibility of compact mode, usage of eslint and adapter-core module",
+                "de": "Kompatibilität mit Kompaktmodus, Verwendung von Eslint und Adapterkernmodul hinzufügen",
+                "ru": "добавить совместимость компактного режима, использование eslint и модуля ядра адаптера",
+                "pt": "adicionar compatibilidade do modo compacto, uso de eslint e módulo de núcleo de adaptador",
+                "nl": "voeg compatibiliteit toe van compacte modus, gebruik van eslint en adapter-core-module",
+                "fr": "ajout de la compatibilité du mode compact, utilisation de eslint et du module adaptateur-core",
+                "it": "aggiungere compatibilità della modalità compatta, utilizzo di eslint e modulo adattatore-core",
+                "es": "agregue compatibilidad de modo compacto, uso de eslint y módulo de adaptador de núcleo",
+                "pl": "dodaj kompatybilność trybu kompaktowego, użycie eslint i modułu adapter-core"
+            },
+            "0.3.0": {
+                "en": "materialize ui and minor fixes, dash buttons now of type device",
+                "de": "Materialize Oberfläche und kleine Änderungen, Dash Buttons sind nun vom Typ Device"
+            }
+        },
+        "platform": "Javascript/Node.js",
+        "license": "MIT",
+        "mode": "daemon",
+        "icon": "amazon-dash.png",
+        "enabled": true,
+        "compact": true,
+        "materialize": true,
+        "extIcon": "https://raw.githubusercontent.com/PArns/ioBroker.amazon-dash/master/admin/amazon-dash.png",
+        "keywords": [
+            "amazon-dash"
+        ],
+        "readme": "https://github.com/PArns/ioBroker.amazon-dash/blob/master/README.md",
+        "loglevel": "info",
+        "type": "hardware",
+        "osDependencies": {
+            "linux": [
+                "libpcap-dev"
+            ]
+        }
     },
-    "authors": [
-      "Patrick Arns <npm@patrick-arns.de>"
-    ],
-    "news": {
-      "0.3.0": {
-        "en": "materialize ui and minor fixes, dash buttons now of type device",
-        "de": "Materialize Oberfläche und kleine Änderungen, Dash Buttons sind nun vom Typ Device"
-      }
+    "native": {
+        "interface": ""
     },
-    "osDependencies": {
-      "linux": ["libpcap-dev"]
-    },
-    "platform": "Javascript/Node.js",
-    "license": "MIT",
-    "mode": "daemon",
-    "icon": "amazon-dash.png",
-    "enabled": true,
-    "materialize": true,
-    "extIcon": "https://raw.githubusercontent.com/PArns/ioBroker.amazon-dash/master/admin/amazon-dash.png",
-    "keywords": [
-      "amazon-dash"
-    ],
-    "readme": "https://github.com/PArns/ioBroker.amazon-dash/blob/master/README.md",
-    "loglevel": "info",
-    "type": "hardware"
-  },
-  "native": {
-      "interface": ""
-  },
-  "objects": [
-  ]
+    "objects": [
+    ]
 }
