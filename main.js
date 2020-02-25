@@ -3,7 +3,7 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
-const int_array_to_hex = require('lib/helpers.js').int_array_to_hex;
+const int_array_to_hex = require('./lib/helpers.js').int_array_to_hex;
 const pcap = require('pcap');
 let adapter;
 
