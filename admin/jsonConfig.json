@@ -1,5 +1,6 @@
 {
     "type": "panel",
+    "i18n": true,
     "items": {
         "checkRights": {
             "type": "checkbox",
@@ -8,9 +9,10 @@
             "os": ["linux"]
         },
         "devices": {
+            "newLine": true,
             "type": "table",
             "items": [
-                {"attr": "name", "type": "text", "title":  "Name", "width": "100%"},
+                {"attr": "name", "type": "text", "title":  "Name", "width": "50%"},
                 {"attr": "mac", "type": "text", "title":  "MAC-Address", "width": 150}
             ]
         }
