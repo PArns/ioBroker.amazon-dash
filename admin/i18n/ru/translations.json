@@ -1,5 +1,5 @@
 {
-  "Check setcap rights": "Проверить права setcap",
+  "Check setcap rights": "Проверить права setcap при старте",
   "Only by linux": "Только под линуксом",
   "MAC-Address": "MAC-адрес"
 }

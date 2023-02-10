@@ -76,6 +76,7 @@ function checkNetCapRights() {
     return new Promise((resolve, reject) => {
         const cmd = `sudo setcap 'cap_net_raw,cap_net_admin+eip' ${process.execPath}`;
 
+        adapter.log.debug(`Executing command: ${cmd}`);
         // System call used for update of js-controller itself,
         // because during installation npm packet will be deleted too, but some files must be loaded even during the install process.
         const child = cp.exec(cmd);
