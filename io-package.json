@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "amazon-dash",
-        "version": "1.1.0",
+        "version": "1.2.0",
         "title": "Amazon Dash-Button",
         "desc": {
             "de": "Adapter für Amazon Dash buttons",
@@ -12,6 +12,19 @@
             "Patrick Arns <npm@patrick-arns.de>"
         ],
         "news": {
+            "1.2.0": {
+                "en": "added option to execute setcap rights by every start",
+                "de": "zusätzliche option zur ausführung von setcap-rechten bei jedem start",
+                "ru": "добавлена опция для выполнения прав setcap на каждом старте",
+                "pt": "opção adicionada para executar direitos de setcap por cada início",
+                "nl": "voegde optie om de rechten te executeren bij elke start",
+                "fr": "option ajoutée pour exécuter les droits setcap par chaque démarrage",
+                "it": "opzione aggiunta per eseguire i diritti setcap da ogni inizio",
+                "es": "opción agregada para ejecutar los derechos de setcap por cada inicio",
+                "pl": "dodać opcję do wykonania ustawodawstwa na każdy początek",
+                "uk": "додано можливість виконувати налаштування прав на кожний старт",
+                "zh-cn": "b. 每项开端执行固定资本权利的附加选择"
+            },
             "1.0.2": {
                 "en": "add compatibility of compact mode, usage of eslint and adapter-core module",
                 "de": "Kompatibilität mit Kompaktmodus, Verwendung von Eslint und Adapterkernmodul hinzufügen",
