@@ -37,8 +37,8 @@ If you're willing to help, drop me a line!
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
-### **WORK IN PROGRESS**
-* (bluefox) added option to execute setcap rights by every start
+### 1.2.0 (2023-02-10)
+* (bluefox) added option to execute `setcap` rights by every start
 
 ### 1.1.0 (2020-02-25)
 + (foxriver76) support of compact mode
