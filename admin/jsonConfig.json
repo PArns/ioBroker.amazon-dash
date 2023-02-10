@@ -1,0 +1,18 @@
+{
+    "type": "panel",
+    "items": {
+        "checkRights": {
+            "type": "checkbox",
+            "label": "Check setcap rights",
+            "help": "Only by linux",
+            "os": ["linux"]
+        },
+        "devices": {
+            "type": "table",
+            "items": [
+                {"attr": "name", "type": "text"},
+                {"attr": "mac", "type": "text"}
+            ]
+        }
+    }
+}

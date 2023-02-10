@@ -1,10 +1,13 @@
-/* jshint -W097 */// jshint strict:false
-/*jslint node: true */
+/* jshint -W097 */
+/* jshint strict: false */
+/* jslint node: true */
 'use strict';
 
+const cp = require('child_process');
 const utils = require('@iobroker/adapter-core');
-const int_array_to_hex = require('./lib/helpers.js').int_array_to_hex;
 const pcap = require('pcap');
+const adapterName = require('./package.json').name.split('.').pop();
+
 let adapter;
 
 let MACs = [
@@ -33,156 +36,190 @@ let MACs = [
     '38F73D',
     '6854FD'
 ];
+let pcapSession;
 
 String.prototype.replaceAll = function (search, replacement) {
     const target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
+function intArrayToHex (intArray) {
+    return intArray.map(d => d.toString(16).padStart(2, '0')).join(':');
+}
+
 function startAdapter(options) {
-    let pcap_session;
 
     options = options || {};
     Object.assign(options, {
-        name: 'amazon-dash'
+        name: adapterName
     });
 
     adapter = new utils.Adapter(options);
 
-    adapter.on('ready', function () {
-        main();
-    });
+    adapter.on('ready', () => main());
 
-    adapter.on('unload', (callback) => {
+    adapter.on('unload', callback => {
         try {
             adapter.log.info('cleaned everything up...');
-            pcap_session.close();
-            pcap_session = null;
+            pcapSession.close();
+            pcapSession = null;
             callback();
         } catch (e) {
             callback();
         }
     });
 
-    function main() {
-        if (adapter.config.devices && adapter.config.devices.length) {
-            for (let k = 0; k < adapter.config.devices.length; k++) {
-                const mac = adapter.config.devices[k].mac;
-                const macOK = mac.replaceAll(':', '');
-
-                if (macOK.length > 5) {
-                    MACs.push(macOK.substring(0, 6));
-                    adapter.log.debug('manual MAC : ' + MACs.push(macOK.substring(0, 6)));
-                }
-            }
-        }
-
-        MACs = remove_duplicates(MACs);
-
-        if (typeof adapter.config.interface == 'undefined' || adapter.config.interface === '') {
-            adapter.config.interface = '';
-            adapter.log.info('starting pcap session on default interface');
-        } else {
-            adapter.log.info('starting pcap session on interface ' + adapter.config.interface);
-        }
-
-
-        pcap_session = pcap.createSession(adapter.config.interface, {filter: 'arp'});
-
-        pcap_session.on('packet', function (raw_packet) {
-            const packet = pcap.decode.packet(raw_packet);
-            if (packet.payload.ethertype === 2054) {
-
-                let mac = packet.payload.payload.sender_ha.addr;
-                mac = int_array_to_hex(mac);
-
-                const nice_mac = mac.replaceAll(':', '-');
-                const needle = mac.slice(0, 8).toString().toUpperCase().split(':').join('');
-
-                adapter.log.debug('needle MAC : ' + needle);
-
-                if (MACs.indexOf(needle) > -1) {
-
-                    adapter.getObject(nice_mac, (err, obj) => {
-                        // if non existent or not type device
-                        if (!obj || obj.type !== 'device') {
-                            adapter.setObject(nice_mac, {
-                                type: 'device',
-                                common: {},
-                                native: {}
-                            });
-                        } // endIf
-                    });
-
-                    adapter.setObjectNotExists(nice_mac + '.pressed', {
-                        type: 'state',
-                        common: {
-                            name: 'Dash button pressed',
-                            type: 'boolean',
-                            role: 'switch',
-                            read: true,
-                            write: false
-                        }
-                    });
-
-                    adapter.setState(nice_mac + '.pressed', {val: true, ack: true});
-
-                    setTimeout(() => {
-                        adapter.setState(nice_mac + '.pressed', {val: false, ack: true});
-                    }, 5000);
-
-                    adapter.setObjectNotExists(nice_mac + '.lastPressed', {
-                        type: 'state',
-                        common: {
-                            name: 'Dash button last pressed date',
-                            type: 'string',
-                            role: 'indicator.date',
-                            read: true,
-                            write: false
-                        }
-                    });
-
-                    adapter.setState(nice_mac + '.lastPressed', {val: (new Date()).toISOString(), ack: true});
-
-                    adapter.setObjectNotExists(nice_mac + '.switch', {
-                        type: 'state',
-                        common: {
-                            name: 'Dash button state toggle',
-                            type: 'boolean',
-                            role: 'switch',
-                            read: true,
-                            write: false
-                        }
-                    });
-
-                    adapter.getState(nice_mac + '.switch', (err, state) => {
-                        if (!state || err)
-                            adapter.setState(nice_mac + '.switch', {val: false, ack: true});
-                        else {
-                            const now = new Date();
-                            if (now.getTime() - state.lc > 5000) {
-                                adapter.setState(nice_mac + '.switch', {val: !state.val, ack: true});
-                            }
-                        }
-                    });
-                }
-            }
-        });
-    }
-
     return adapter;
 } // endStartAdapter
 
-function remove_duplicates(arr) {
+function checkNetCapRights() {
+    return new Promise((resolve, reject) => {
+        const cmd = `sudo setcap 'cap_net_raw,cap_net_admin+eip' ${process.execPath}`;
+
+        // System call used for update of js-controller itself,
+        // because during installation npm packet will be deleted too, but some files must be loaded even during the install process.
+        const child = cp.exec(cmd);
+
+        child.stderr.pipe(process.stderr);
+        child.stdout.pipe(process.stdout);
+
+        child.on('exit', (code /* , signal */) => {
+            // code 1 is strange error that cannot be explained. Everything is installed but error :(
+            if (code && code !== 1) {
+                reject(`Cannot set rights: ${code}`);
+            } else {
+                // command succeeded
+                resolve();
+            }
+        });
+    });
+}
+
+async function main() {
+    if (adapter.config.checkRights && process.platform === 'linux') {
+        await checkNetCapRights();
+    }
+
+    if (adapter.config.devices && adapter.config.devices.length) {
+        for (let k = 0; k < adapter.config.devices.length; k++) {
+            const mac = adapter.config.devices[k].mac;
+            const macOK = mac.replaceAll(':', '');
+
+            if (macOK.length > 5) {
+                MACs.push(macOK.substring(0, 6));
+                adapter.log.debug(`manual MAC: ${MACs.push(macOK.substring(0, 6))}`);
+            }
+        }
+    }
+
+    MACs = removeDuplicates(MACs);
+
+    if (typeof adapter.config.interface === 'undefined' || adapter.config.interface === '') {
+        adapter.config.interface = '';
+        adapter.log.info('starting pcap session on default interface');
+    } else {
+        adapter.log.info(`starting pcap session on interface ${adapter.config.interface}`);
+    }
+
+    pcapSession = pcap.createSession(adapter.config.interface, {filter: 'arp'});
+
+    pcapSession.on('packet', async rawPacket => {
+        const packet = pcap.decode.packet(rawPacket);
+
+        if (packet.payload.ethertype === 2054) {
+            let mac = packet.payload.payload.sender_ha.addr;
+            mac = intArrayToHex(mac);
+
+            const niceMac = mac.replaceAll(':', '-');
+            const needle = mac.slice(0, 8).toString().toUpperCase().split(':').join('');
+
+            adapter.log.debug(`needle MAC: ${needle}`);
+
+            if (MACs.includes(needle)) {
+                try {
+                    const obj = await adapter.getObjectAsync(niceMac);
+                    // if non-existent or not type device
+                    if (!obj || obj.type !== 'device') {
+                        await adapter.setObjectAsync(niceMac, {
+                            type: 'device',
+                            common: {},
+                            native: {}
+                        });
+                    }
+                } catch (e) {
+                    adapter.log.error(`Cannot create state [${niceMac}]: ${e}`);
+                }
+
+                const id = `${niceMac}.pressed`;
+
+                await adapter.setObjectNotExistsAsync(id, {
+                    type: 'state',
+                    common: {
+                        name: 'Dash button pressed',
+                        type: 'boolean',
+                        role: 'switch',
+                        read: true,
+                        write: false
+                    }
+                });
+
+                await adapter.setStateAsync(id, {val: true, ack: true});
+
+                // reset press state to false in 5 seconds
+                setTimeout(() =>
+                    adapter.setState(id, {val: false, ack: true}), 5000);
+
+                await adapter.setObjectNotExistsAsync(`${niceMac}.lastPressed`, {
+                    type: 'state',
+                    common: {
+                        name: 'Dash button last pressed date',
+                        type: 'string',
+                        role: 'indicator.date',
+                        read: true,
+                        write: false
+                    }
+                });
+
+                await adapter.setStateAsync(`${niceMac}.lastPressed`, {val: (new Date()).toISOString(), ack: true});
+
+                await adapter.setObjectNotExistsAsync(`${niceMac}.switch`, {
+                    type: 'state',
+                    common: {
+                        name: 'Dash button state toggle',
+                        type: 'boolean',
+                        role: 'switch',
+                        read: true,
+                        write: false
+                    }
+                });
+
+                try {
+                    const state = await adapter.getStateAsync(`${niceMac}.switch`);
+                    if (!state) {
+                        await adapter.setStateAsync(`${niceMac}.switch`, {val: false, ack: true});
+                    } else {
+                        if (Date.now() - state.lc > 5000) {
+                            await adapter.setStateAsync(`${niceMac}.switch`, {val: !state.val, ack: true});
+                        }
+                    }
+                } catch (e) {
+                    adapter.log.error(`Cannot set switch state [${niceMac}.switch]: ${e}`);
+                }
+            }
+        }
+    });
+}
+
+function removeDuplicates(arr) {
     const obj = {};
-    const ret_arr = [];
+    const retArray = [];
     for (let i = 0; i < arr.length; i++) {
         obj[arr[i]] = true;
     }
     for (const key in obj) {
-        ret_arr.push(key);
+        retArray.push(key);
     }
-    return ret_arr;
+    return retArray;
 }
 
 // If started as allInOne/compact mode => return function to create instance
