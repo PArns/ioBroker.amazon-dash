@@ -77,7 +77,7 @@
         $('#' + id + '.value').val(value).change(function () {
             onChange();
         }).keyup(function () {
-            // Chack that only numbers entered
+            // Check that only numbers entered
             if ($(this).hasClass('number')) {
                 var val = $(this).val();
                 if (val) {

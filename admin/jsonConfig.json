@@ -1,0 +1,20 @@
+{
+    "type": "panel",
+    "i18n": true,
+    "items": {
+        "checkRights": {
+            "type": "checkbox",
+            "label": "Check setcap rights",
+            "help": "Only by linux",
+            "os": ["linux"]
+        },
+        "devices": {
+            "newLine": true,
+            "type": "table",
+            "items": [
+                {"attr": "name", "type": "text", "title":  "Name", "width": "50%"},
+                {"attr": "mac", "type": "text", "title":  "MAC-Address", "width": 150}
+            ]
+        }
+    }
+}

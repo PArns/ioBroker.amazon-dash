@@ -46,10 +46,19 @@
             "linux": [
                 "libpcap-dev"
             ]
+        },
+        "adminUI": {
+            "config": "json"
+        },
+        "titleLang": {
+            "en": "Amazon Dash-Button"
         }
     },
     "native": {
-        "interface": ""
+        "interface": "",
+        "devices": [
+            {"name":  "button", "mac":  "AF:FE:AF"}
+        ]
     },
     "objects": [
     ]
