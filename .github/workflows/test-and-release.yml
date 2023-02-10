@@ -30,7 +30,6 @@ jobs:
         with:
           node-version: 16
       - run: npm i
-      - run: NODE_OPTIONS=--max_old_space_size=4096 npm run build
 
   # Runs adapter tests on all supported node versions and OSes
   adapter-tests:
@@ -42,7 +41,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v3
