@@ -13,7 +13,7 @@ This adapter does not work under Windows!
 ## Steps 
 1. Install `libpcap-dev`:
 
-`apt-get install libpcap-dev`
+`sudo apt-get install libpcap-dev`
 
 2. Pair your Dash-Adapter within the Amazon App but don't select a product! 
     Just quit the installation procedure at the product selection tab.

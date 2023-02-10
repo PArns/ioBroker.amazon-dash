@@ -10,8 +10,8 @@
         "devices": {
             "type": "table",
             "items": [
-                {"attr": "name", "type": "text"},
-                {"attr": "mac", "type": "text"}
+                {"attr": "name", "type": "text", "title":  "Name", "width": "100%"},
+                {"attr": "mac", "type": "text", "title":  "MAC-Address", "width": 150}
             ]
         }
     }
