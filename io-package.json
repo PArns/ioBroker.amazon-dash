@@ -55,6 +55,8 @@
         "readme": "https://github.com/PArns/ioBroker.amazon-dash/blob/master/README.md",
         "loglevel": "info",
         "type": "hardware",
+        "connectionType": "local",
+        "dataSource": "push",
         "osDependencies": {
             "linux": [
                 "libpcap-dev"
