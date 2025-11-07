@@ -54,6 +54,7 @@
         ],
         "readme": "https://github.com/PArns/ioBroker.amazon-dash/blob/master/README.md",
         "loglevel": "info",
+        "tier": 2,
         "type": "hardware",
         "connectionType": "local",
         "dataSource": "push",
