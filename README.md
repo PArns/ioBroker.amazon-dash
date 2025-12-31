@@ -117,7 +117,7 @@ If you're willing to help, drop me a line!
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2016-2023 Patrick Arns <npm@patrick-arns.de>
+Copyright (c) 2016-2026 Patrick Arns <npm@patrick-arns.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
