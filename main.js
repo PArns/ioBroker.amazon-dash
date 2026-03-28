@@ -3,7 +3,7 @@
 /* jslint node: true */
 'use strict';
 
-const cp = require('child_process');
+const cp = require('node:child_process');
 const utils = require('@iobroker/adapter-core');
 const pcap = require('pcap');
 const adapterName = require('./package.json').name.split('.').pop();
