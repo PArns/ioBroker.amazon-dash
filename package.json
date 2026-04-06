@@ -29,7 +29,7 @@
         "url": "https://github.com/PArns/ioBroker.amazon-dash"
     },
     "engines": {
-        "node": ">=10.0.0"
+        "node": ">=20.0.0"
     },
     "optionalDependencies": {
         "pcap": "^3.1.0"

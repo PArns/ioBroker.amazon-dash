@@ -37,6 +37,9 @@ If you're willing to help, drop me a line!
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
+
+### **WORK IN PROGRESS**
+- (iobroker-bot) Adapter requires node.js >= 20 now.
 ### 1.2.0 (2023-02-10)
 * (bluefox) added option to execute `setcap` rights by every start
 
