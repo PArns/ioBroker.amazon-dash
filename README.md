@@ -112,7 +112,9 @@ If you're willing to help, drop me a line!
 * (PArns) Changed License
 
 ### 0.0.1
-* (PArns) Initial release 
+* (PArns) Initial release
+
+[Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## License
 The MIT License (MIT)
