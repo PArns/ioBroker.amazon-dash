@@ -1,80 +1,87 @@
 {
-    "common": {
-        "name": "amazon-dash",
-        "version": "1.2.0",
-        "title": "Amazon Dash-Button",
-        "desc": {
-            "de": "Adapter für Amazon Dash buttons",
-            "en": "Adapter for Amazon Dash buttons",
-            "ru": "Драйвер для подключения Amazon Dash кнопок"
-        },
-        "authors": [
-            "Patrick Arns <npm@patrick-arns.de>"
-        ],
-        "news": {
-            "1.2.0": {
-                "en": "added option to execute setcap rights by every start",
-                "de": "zusätzliche option zur ausführung von setcap-rechten bei jedem start",
-                "ru": "добавлена опция для выполнения прав setcap на каждом старте",
-                "pt": "opção adicionada para executar direitos de setcap por cada início",
-                "nl": "voegde optie om de rechten te executeren bij elke start",
-                "fr": "option ajoutée pour exécuter les droits setcap par chaque démarrage",
-                "it": "opzione aggiunta per eseguire i diritti setcap da ogni inizio",
-                "es": "opción agregada para ejecutar los derechos de setcap por cada inicio",
-                "pl": "dodać opcję do wykonania ustawodawstwa na każdy początek",
-                "uk": "додано можливість виконувати налаштування прав на кожний старт",
-                "zh-cn": "b. 每项开端执行固定资本权利的附加选择"
-            },
-            "1.0.2": {
-                "en": "add compatibility of compact mode, usage of eslint and adapter-core module",
-                "de": "Kompatibilität mit Kompaktmodus, Verwendung von Eslint und Adapterkernmodul hinzufügen",
-                "ru": "добавить совместимость компактного режима, использование eslint и модуля ядра адаптера",
-                "pt": "adicionar compatibilidade do modo compacto, uso de eslint e módulo de núcleo de adaptador",
-                "nl": "voeg compatibiliteit toe van compacte modus, gebruik van eslint en adapter-core-module",
-                "fr": "ajout de la compatibilité du mode compact, utilisation de eslint et du module adaptateur-core",
-                "it": "aggiungere compatibilità della modalità compatta, utilizzo di eslint e modulo adattatore-core",
-                "es": "agregue compatibilidad de modo compacto, uso de eslint y módulo de adaptador de núcleo",
-                "pl": "dodaj kompatybilność trybu kompaktowego, użycie eslint i modułu adapter-core"
-            },
-            "0.3.0": {
-                "en": "materialize ui and minor fixes, dash buttons now of type device",
-                "de": "Materialize Oberfläche und kleine Änderungen, Dash Buttons sind nun vom Typ Device"
-            }
-        },
-        "platform": "Javascript/Node.js",
-        "license": "MIT",
-        "mode": "daemon",
-        "icon": "amazon-dash.png",
-        "enabled": true,
-        "compact": true,
-        "materialize": true,
-        "extIcon": "https://raw.githubusercontent.com/PArns/ioBroker.amazon-dash/master/admin/amazon-dash.png",
-        "keywords": [
-            "amazon-dash"
-        ],
-        "readme": "https://github.com/PArns/ioBroker.amazon-dash/blob/master/README.md",
-        "loglevel": "info",
-        "type": "hardware",
-        "connectionType": "local",
-        "dataSource": "push",
-        "osDependencies": {
-            "linux": [
-                "libpcap-dev"
-            ]
-        },
-        "adminUI": {
-            "config": "json"
-        },
-        "titleLang": {
-            "en": "Amazon Dash-Button"
-        }
+  "common": {
+    "name": "amazon-dash",
+    "version": "1.2.0",
+    "title": "Amazon Dash-Button",
+    "desc": {
+      "de": "Adapter für Amazon Dash buttons",
+      "en": "Adapter for Amazon Dash buttons",
+      "ru": "Драйвер для подключения Amazon Dash кнопок"
     },
-    "native": {
-        "interface": "",
-        "devices": [
-            {"name":  "button", "mac":  "AF:FE:AF"}
-        ]
+    "authors": [
+      "Patrick Arns <npm@patrick-arns.de>"
+    ],
+    "news": {
+      "1.2.0": {
+        "en": "added option to execute setcap rights by every start",
+        "de": "zusätzliche option zur ausführung von setcap-rechten bei jedem start",
+        "ru": "добавлена опция для выполнения прав setcap на каждом старте",
+        "pt": "opção adicionada para executar direitos de setcap por cada início",
+        "nl": "voegde optie om de rechten te executeren bij elke start",
+        "fr": "option ajoutée pour exécuter les droits setcap par chaque démarrage",
+        "it": "opzione aggiunta per eseguire i diritti setcap da ogni inizio",
+        "es": "opción agregada para ejecutar los derechos de setcap por cada inicio",
+        "pl": "dodać opcję do wykonania ustawodawstwa na każdy początek",
+        "uk": "додано можливість виконувати налаштування прав на кожний старт",
+        "zh-cn": "b. 每项开端执行固定资本权利的附加选择"
+      },
+      "1.0.2": {
+        "en": "add compatibility of compact mode, usage of eslint and adapter-core module",
+        "de": "Kompatibilität mit Kompaktmodus, Verwendung von Eslint und Adapterkernmodul hinzufügen",
+        "ru": "добавить совместимость компактного режима, использование eslint и модуля ядра адаптера",
+        "pt": "adicionar compatibilidade do modo compacto, uso de eslint e módulo de núcleo de adaptador",
+        "nl": "voeg compatibiliteit toe van compacte modus, gebruik van eslint en adapter-core-module",
+        "fr": "ajout de la compatibilité du mode compact, utilisation de eslint et du module adaptateur-core",
+        "it": "aggiungere compatibilità della modalità compatta, utilizzo di eslint e modulo adattatore-core",
+        "es": "agregue compatibilidad de modo compacto, uso de eslint y módulo de adaptador de núcleo",
+        "pl": "dodaj kompatybilność trybu kompaktowego, użycie eslint i modułu adapter-core"
+      },
+      "0.3.0": {
+        "en": "materialize ui and minor fixes, dash buttons now of type device",
+        "de": "Materialize Oberfläche und kleine Änderungen, Dash Buttons sind nun vom Typ Device"
+      }
     },
-    "objects": [
+    "platform": "Javascript/Node.js",
+    "license": "MIT",
+    "mode": "daemon",
+    "icon": "amazon-dash.png",
+    "enabled": true,
+    "compact": true,
+    "materialize": true,
+    "extIcon": "https://raw.githubusercontent.com/PArns/ioBroker.amazon-dash/master/admin/amazon-dash.png",
+    "keywords": [
+      "amazon-dash"
+    ],
+    "readme": "https://github.com/PArns/ioBroker.amazon-dash/blob/master/README.md",
+    "loglevel": "info",
+    "type": "hardware",
+    "connectionType": "local",
+    "dataSource": "push",
+    "osDependencies": {
+      "linux": [
+        "libpcap-dev"
+      ]
+    },
+    "adminUI": {
+      "config": "json"
+    },
+    "titleLang": {
+      "en": "Amazon Dash-Button"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
     ]
+  },
+  "native": {
+    "interface": "",
+    "devices": [
+      {
+        "name": "button",
+        "mac": "AF:FE:AF"
+      }
+    ]
+  },
+  "objects": []
 }
